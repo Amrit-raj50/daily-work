@@ -2,23 +2,21 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Child1 from './components/child1'
+import UserContext from './context/userContext'
 
 function App() {
-  const [res,showRes] = useState(false);
-  const [inp,setInp] = useState(0);
-  const [arr,setArr] = useState([23,4,5,72,167,21,77,89,20,2,4,333,890]);
-
-  const checkNumber = () => {
-    const exixts = arr.includes(Number(inp));
-    showRes(exixts);
-  }
-
+  const [count, setCount] = useState(0)
+  
+  const username = "amrit";
   return (
     <>
-      <p>Check number is present in the array or not</p>
-      <input type="number" placeholder='enter the number' value={inp} onChange={(e) => setInp(e.target.value)} />
-      <button onClick={checkNumber}>CHECK</button>
-      <p>res : {res ? "Number Found" : "Number not found"}</p>
+    <h1>HELLO</h1>
+    <UserContext.Provider value = {username}>
+      <h1>App</h1>
+      <Child1/>
+    </UserContext.Provider>
+      {/* <Child1 name = {username}/> */}
     </>
   )
 }
